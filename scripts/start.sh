@@ -32,3 +32,6 @@ else
     printf 'Starting WiFi Connect\n'
     ./wifi-connect -s $ssid
 fi
+
+# Start your application here.
+sleep infinity
