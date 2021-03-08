@@ -28,6 +28,11 @@ iwgetid -r
 
 if [ $? -eq 0 ]; then
     printf 'Skipping WiFi Connect\n'
+
+    #setting connections retries to infinity
+    wifi_name=`iwgetid|awk '{split($0,a,"\""); print a[2]}'`
+    printf "WIFI hotspot: $wifi_name\n"
+    nmcli con mod $wifi_name connection.autoconnect-retries 0
 else
     printf 'Starting WiFi Connect\n'
     ./wifi-connect -s $ssid
